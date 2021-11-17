@@ -26,10 +26,12 @@ const mongoose = require('mongoose');
 
 //Accessing CORS
 const cors = require('cors');
-app.use(cors());
+
 
 //Create an application 
 const app = express();
+
+app.use(cors());
 
 //used to fetch the data from forms on HTTP POST, and PUT
 app.use(bodyParser.urlencoded({
