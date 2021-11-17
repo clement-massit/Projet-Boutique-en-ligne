@@ -10,11 +10,11 @@ import { ActivatedRoute, Router  } from '@angular/router';
   styleUrls: ['./add.page.scss'],
 })
 export class AddPage implements OnInit {
-
   private produit : FormGroup;
   public api : RestService;
 
-  constructor(public restapi: RestService,
+  constructor(
+    public restapi: RestService,
     public loadingController: LoadingController,
     private route: ActivatedRoute,
     public router: Router,

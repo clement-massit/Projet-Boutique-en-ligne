@@ -3,13 +3,14 @@ import { LoadingController } from '@ionic/angular';
 import { RestService } from '../rest.service';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
+
 @Component({
-  selector: 'app-view-categorie',
-  templateUrl: './view-categorie.page.html',
-  styleUrls: ['./view-categorie.page.scss'],
+  selector: 'app-view-boutique',
+  templateUrl: './view-boutique.page.html',
+  styleUrls: ['./view-boutique.page.scss'],
 })
-export class ViewCategoriePage implements OnInit {
-  categorie : any;
+export class ViewBoutiquePage implements OnInit {
+  boutique : any;
   api : RestService;
   id : string;
   title : string;
@@ -25,18 +26,18 @@ export class ViewCategoriePage implements OnInit {
 
   }
 
-  async getCategorie(id:any) {
+  async getBoutique(id:any) {
     const loading = await this.loadingController.create({
       message: 'Loading'
     });
 
     await loading.present();
-    await this.api.getCategorie(this.id)
+    await this.api.getBoutique(this.id)
       .subscribe(res => {
         console.log(res);
-        this.categorie = res;
-        this.title = this.categorie.title;
-        this.description = this.categorie.description;
+        this.boutique = res;
+        this.title = this.boutique.title;
+        this.description = this.boutique.description;
         loading.dismiss();
       }, err => {
         console.log(err);
@@ -45,21 +46,21 @@ export class ViewCategoriePage implements OnInit {
 
   }
 
-  async saveCategorie(){
-    await this.api.updateProduit(this.categorie._id, this.categorie)
+  async saveBoutique(){
+    await this.api.updateProduit(this.boutique._id, this.boutique)
     .subscribe(res => {
         console.log(res);
-        this.router.navigate(['/categories']);
+        this.router.navigate(['/boutiques']);
       }, (err) => {
         console.log(err);
       });
   }
 
-  async deleteCategorie(){
-    await this.api.deleteCategorie(this.categorie._id)
+  async deleteBoutique(){
+    await this.api.deleteBoutique(this.boutique._id)
     .subscribe(res => {
         console.log(res);
-        this.router.navigate(['/categories']);
+        this.router.navigate(['/boutiques']);
       }, (err) => {
         console.log(err);
       });
@@ -69,19 +70,19 @@ export class ViewCategoriePage implements OnInit {
 
     console.log(this.description);
     console.log(this.title);
-    console.log(this.categorie._id);
+    console.log(this.boutique._id);
     
 
-    this.categorie.title = this.title;
-    this.categorie.description = this.description;
+    this.boutique.title = this.title;
+    this.boutique.description = this.description;
 
-    this.saveCategorie();
+    this.saveBoutique();
 
   }
 
   delete() {
 
-    this.deleteCategorie();
+    this.deleteBoutique();
     
   }
 
@@ -90,7 +91,7 @@ export class ViewCategoriePage implements OnInit {
       this.id=params.get('id');
     });
     console.log("Current id: " + this.id);
-    this.getCategorie(this.id);
+    this.getBoutique(this.id);
   }
 
 }

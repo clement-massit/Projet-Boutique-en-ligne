@@ -4,10 +4,10 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Categories
+      Boutiques
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button routerLink="/add-categorie" routerDirection="forward">
+      <ion-button routerLink="/add-boutique" routerDirection="forward">
         <ion-icon name="add-circle"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -32,7 +32,7 @@
         <ion-item>
           <ion-item slot="start" routerLink="/boutiques" routerDirection="forward">Boutique</ion-item>
             <ion-buttons slot="end">
-              <ion-button routerLink="/addProduct" routerDirection="forward">
+              <ion-button routerLink="/add-boutique" routerDirection="forward">
                 <ion-icon slot="icon-only" name="add-circle"></ion-icon>
               </ion-button>
             </ion-buttons>
@@ -61,18 +61,16 @@
   
   <ion-router-outlet id="main"></ion-router-outlet>
 
-  <ion-list *ngFor="let categorie of categories">
+  <ion-list *ngFor="let boutique of boutiques">
     <ion-item-sliding #item>
-      <ion-item *ngIf="categorie" color="primary">
-        {{categorie.title}}
+      <ion-item *ngIf="boutique" color="primary">
+        {{boutique.title}}
       </ion-item>
-
-
       <ion-item-options side="start">
       </ion-item-options>
       <ion-item-options side="end">
-        <button ion-button color="light" routerLink="/view-categorie/{{categorie._id}}">Edit</button>
-        <button ion-button (click)="delete([categorie._id])" color="danger">Delete</button>
+        <button ion-button color="light" routerLink="/view-boutique/{{boutique._id}}">Edit</button>
+        <button ion-button (click)="delete([boutique._id])" color="danger">Delete</button>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>

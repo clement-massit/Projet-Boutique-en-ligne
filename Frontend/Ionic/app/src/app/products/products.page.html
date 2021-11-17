@@ -26,7 +26,7 @@
     <ion-content>
       <ion-list>
         <ion-item>
-          <ion-item slot="start" routerLink="/products" routerDirection="forward">Boutique</ion-item>
+          <ion-item slot="start" routerLink="/boutiques" routerDirection="forward">Boutique</ion-item>
             <ion-buttons slot="end">
               <ion-button routerLink="/addProduct" routerDirection="forward">
                 <ion-icon slot="icon-only" name="add-circle"></ion-icon>
@@ -61,7 +61,7 @@
   <ion-list *ngFor="let produit of produits">
     <ion-item-sliding #item>
       <ion-item *ngIf="produit" color="primary">
-        {{produit.title}}
+        {{produit.title}}  {{produit.price}}
       </ion-item>
 
 

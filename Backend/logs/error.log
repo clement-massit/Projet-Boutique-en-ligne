@@ -129,3 +129,4 @@ Sun, 14 Nov 2021 15:50:06 GMT | ERROR  | HTTP 404: ask for:  http://localhost:30
 Sun, 14 Nov 2021 16:06:11 GMT | ERROR  | HTTP 404: ask for:  http://localhost:3000/todos
 Sun, 14 Nov 2021 16:06:11 GMT | ERROR  | HTTP 404: ask for:  http://localhost:3000/todos
 Sun, 14 Nov 2021 16:10:04 GMT | ERROR  | HTTP 404: ask for:  http://localhost:3000/todo/6190f453ed5801624368e9dd
+Wed, 17 Nov 2021 07:37:40 GMT | ERROR  | HTTP 404: ask for:  http://localhost:3000/produits

@@ -55,6 +55,39 @@ export class RestService {
 
   }
 
+  createBoutique(data:any): Observable<any> {
+
+    const apiUrl = "http://localhost:3000/boutique/";
+
+    return this.http.post(apiUrl, data, httpOptions).pipe(
+      catchError(this.handleError));
+
+  }
+
+  updateBoutique(id:any, data:any) : Observable<any> {
+
+    const apiUrl = "http://localhost:3000/boutique/" + id;
+
+    return this.http.put(apiUrl, data, httpOptions).pipe(
+      catchError(this.handleError));
+  }
+
+  deleteBoutique(id:any) : Observable<any> {
+
+    const apiUrl = "http://localhost:3000/boutique/" + id;
+
+    return this.http.delete(apiUrl, httpOptions).pipe(
+      catchError(this.handleError));
+  }
+
+  doneBoutique(id:any) : Observable<any> {
+
+    const apiUrl = "http://localhost:3000/boutique/" + id + "/done";
+
+    return this.http.post(apiUrl, httpOptions).pipe(
+      catchError(this.handleError));
+  }
+
   ////////////////////////////     Categorie      ////////////////////////////
 
   getCategories(): Observable<any> {

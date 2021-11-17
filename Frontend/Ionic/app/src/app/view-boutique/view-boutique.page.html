@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/boutiques"><ion-icon name="arrow-back-circle-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>
+      <span *ngIf="boutique" ngDefaultControl [(ngModel)]="title">{{boutique.title}}</span>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="save()"> <ion-icon slot="icon-only" name="save"></ion-icon></ion-button>
+      <ion-button (click)="delete()"> <ion-icon slot="icon-only" name="trash"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-input value="{{boutique.title}}" rows="10" *ngIf="boutique" ngDefaultControl [(ngModel)]="title"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-textarea value="{{boutique.description}}" rows="10" *ngIf="boutique" ngDefaultControl [(ngModel)]="description"></ion-textarea>
+  </ion-item>
+</ion-content>

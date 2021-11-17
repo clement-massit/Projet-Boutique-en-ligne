@@ -35,6 +35,19 @@ const routes: Routes = [
     path: 'view-categorie/:id',
     loadChildren: () => import('./view-categorie/view-categorie.module').then( m => m.ViewCategoriePageModule)
   },
+  {
+    path: 'boutiques',
+    loadChildren: () => import('./boutiques/boutiques.module').then( m => m.BoutiquesPageModule)
+  },
+  {
+    path: 'add-boutique',
+    loadChildren: () => import('./add-boutique/add-boutique.module').then( m => m.AddBoutiquePageModule)
+  },
+  {
+    path: 'view-boutique/:id',
+    loadChildren: () => import('./view-boutique/view-boutique.module').then( m => m.ViewBoutiquePageModule)
+  },
+
 
 ];
 
