@@ -32,6 +32,8 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 
+app.use(cors());
+
 //used to fetch the data from forms on HTTP POST, and PUT
 app.use(bodyParser.urlencoded({
 
