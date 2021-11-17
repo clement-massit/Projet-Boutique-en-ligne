@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/categories"><ion-icon name="arrow-back-circle-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>
+      <span *ngIf="categorie" ngDefaultControl [(ngModel)]="title">{{categorie.title}}</span>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="save()"> <ion-icon slot="icon-only" name="save"></ion-icon></ion-button>
+      <ion-button (click)="delete()"> <ion-icon slot="icon-only" name="trash"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-input value="{{categorie.title}}" rows="10" *ngIf="categorie" ngDefaultControl [(ngModel)]="title"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-textarea value="{{categorie.description}}" rows="10" *ngIf="categorie" ngDefaultControl [(ngModel)]="description"></ion-textarea>
+  </ion-item>
+</ion-content>

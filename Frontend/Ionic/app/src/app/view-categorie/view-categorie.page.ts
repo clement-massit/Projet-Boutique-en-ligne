@@ -4,17 +4,16 @@ import { RestService } from '../rest.service';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-view',
-  templateUrl: './view.page.html',
-  styleUrls: ['./view.page.scss'],
+  selector: 'app-view-categorie',
+  templateUrl: './view-categorie.page.html',
+  styleUrls: ['./view-categorie.page.scss'],
 })
-export class ViewPage implements OnInit {
-  produit : any;
+export class ViewCategoriePage implements OnInit {
+  categorie : any;
   api : RestService;
   id : string;
   title : string;
   description : string;
-  price : Number;
 
   constructor(
     public restapi: RestService, 
@@ -26,19 +25,18 @@ export class ViewPage implements OnInit {
 
   }
 
-  async getProduit(id:any) {
+  async getCategorie(id:any) {
     const loading = await this.loadingController.create({
       message: 'Loading'
     });
 
     await loading.present();
-    await this.api.getProduit(this.id)
+    await this.api.getCategorie(this.id)
       .subscribe(res => {
         console.log(res);
-        this.produit = res;
-        this.title = this.produit.title;
-        this.description = this.produit.description;
-        this.price = this.produit.price;
+        this.categorie = res;
+        this.title = this.categorie.title;
+        this.description = this.categorie.description;
         loading.dismiss();
       }, err => {
         console.log(err);
@@ -47,21 +45,21 @@ export class ViewPage implements OnInit {
 
   }
 
-  async saveProduit(){
-    await this.api.updateProduit(this.produit._id, this.produit)
+  async saveCategorie(){
+    await this.api.updateProduit(this.categorie._id, this.categorie)
     .subscribe(res => {
         console.log(res);
-        this.router.navigate(['/products']);
+        this.router.navigate(['/categories']);
       }, (err) => {
         console.log(err);
       });
   }
 
-  async deleteProduit(){
-    await this.api.deleteProduit(this.produit._id)
+  async deleteCategorie(){
+    await this.api.deleteProduit(this.categorie._id)
     .subscribe(res => {
         console.log(res);
-        this.router.navigate(['/products']);
+        this.router.navigate(['/categories']);
       }, (err) => {
         console.log(err);
       });
@@ -71,20 +69,19 @@ export class ViewPage implements OnInit {
 
     console.log(this.description);
     console.log(this.title);
-    console.log(this.produit._id);
-    console.log(this.price);
+    console.log(this.categorie._id);
+    
 
-    this.produit.title = this.title;
-    this.produit.description = this.description;
-    this.produit.price = this.price;
+    this.categorie.title = this.title;
+    this.categorie.description = this.description;
 
-    this.saveProduit();
+    this.saveCategorie();
 
   }
 
   delete() {
 
-    this.deleteProduit();
+    this.deleteCategorie();
     
   }
 
@@ -93,6 +90,7 @@ export class ViewPage implements OnInit {
       this.id=params.get('id');
     });
     console.log("Current id: " + this.id);
-    this.getProduit(this.id);
+    this.getCategorie(this.id);
   }
+
 }

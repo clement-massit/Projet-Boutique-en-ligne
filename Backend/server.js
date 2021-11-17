@@ -24,6 +24,10 @@ const {loggers, transports, format} = require("winston");
 //Accessing MongoDB
 const mongoose = require('mongoose');
 
+//Accessing CORS
+const cors = require('cors');
+app.use(cors());
+
 //Create an application 
 const app = express();
 
