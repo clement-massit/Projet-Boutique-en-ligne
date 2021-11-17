@@ -12,13 +12,25 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'add',
-    loadChildren: () => import('./add/add.module').then( m => m.AddPageModule)
+    path: 'products',
+    loadChildren: () => import('./products/products.module').then( m => m.ProductsPageModule)
   },
   {
-    path: 'view/:id',
-    loadChildren: () => import('./view/view.module').then( m => m.ViewPageModule)
+    path: 'addProduct',
+    loadChildren: () => import('./addProduct/add.module').then( m => m.AddPageModule)
   },
+  {
+    path: 'viewProduct/:id',
+    loadChildren: () => import('./viewProduct/view.module').then( m => m.ViewPageModule)
+  },  {
+    path: 'add-categorie',
+    loadChildren: () => import('./add-categorie/add-categorie.module').then( m => m.AddCategoriePageModule)
+  },
+  {
+    path: 'categories',
+    loadChildren: () => import('./categories/categories.module').then( m => m.CategoriesPageModule)
+  },
+
 ];
 
 @NgModule({

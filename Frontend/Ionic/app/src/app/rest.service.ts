@@ -55,6 +55,8 @@ export class RestService {
 
   }
 
+  ////////////////////////////     Categorie      ////////////////////////////
+
   getCategories(): Observable<any> {
 
     const apiUrl = "http://localhost:3000/categories";
@@ -75,6 +77,40 @@ export class RestService {
 
   }
 
+  createCategorie(data:any): Observable<any> {
+
+    const apiUrl = "http://localhost:3000/categorie/";
+
+    return this.http.post(apiUrl, data, httpOptions).pipe(
+      catchError(this.handleError));
+
+  }
+
+  updateCategorie(id:any, data:any) : Observable<any> {
+
+    const apiUrl = "http://localhost:3000/categorie/" + id;
+
+    return this.http.put(apiUrl, data, httpOptions).pipe(
+      catchError(this.handleError));
+  }
+
+  deleteCategorie(id:any) : Observable<any> {
+
+    const apiUrl = "http://localhost:3000/categorie/" + id;
+
+    return this.http.delete(apiUrl, httpOptions).pipe(
+      catchError(this.handleError));
+  }
+
+  doneCategorie(id:any) : Observable<any> {
+
+    const apiUrl = "http://localhost:3000/categorie/" + id + "/done";
+
+    return this.http.post(apiUrl, httpOptions).pipe(
+      catchError(this.handleError));
+  }
+  
+////////////////////////////     PRODUIT      ////////////////////////////
   getProduits(): Observable<any> {
 
     const apiUrl = "http://localhost:3000/produits";

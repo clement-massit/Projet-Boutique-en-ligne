@@ -50,7 +50,7 @@ export class ViewPage implements OnInit {
     await this.api.updateProduit(this.produit._id, this.produit)
     .subscribe(res => {
         console.log(res);
-        this.router.navigate(['/']);
+        this.router.navigate(['/products']);
       }, (err) => {
         console.log(err);
       });
@@ -60,7 +60,7 @@ export class ViewPage implements OnInit {
     await this.api.deleteProduit(this.produit._id)
     .subscribe(res => {
         console.log(res);
-        this.router.navigate(['/']);
+        this.router.navigate(['/products']);
       }, (err) => {
         console.log(err);
       });
