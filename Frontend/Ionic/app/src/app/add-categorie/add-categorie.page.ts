@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, LoadingController } from '@ionic/angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestService } from '../rest.service';
-import { ActivatedRoute, Router  } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router  } from '@angular/router';
 
 @Component({
   selector: 'app-add-categorie',
@@ -12,6 +12,11 @@ import { ActivatedRoute, Router  } from '@angular/router';
 export class AddCategoriePage implements OnInit {
   private categorie : FormGroup;
   public api : RestService;
+  boutique : any;
+  boutiques : any;
+  id : String;
+  
+  
 
   constructor(
     public restapi: RestService,
@@ -21,15 +26,40 @@ export class AddCategoriePage implements OnInit {
     private formBuilder: FormBuilder) {
       this.categorie = this.formBuilder.group({
             title: [''],
-            description: ['']
+            description: [''], 
+            boutiques: ['']   
           });
       this.api = restapi;
   }
 
+  async getBoutiques() {
+    const loading = await this.loadingController.create({
+      message: 'Loading'
+    });
+
+    await loading.present();
+    await this.api.getBoutiques()
+      .subscribe(res => {
+        console.log(res);
+        this.boutiques = res.filter((aBoutique) => {
+          return this.boutiques
+        });
+        loading.dismiss();
+      }, err => {
+        console.log(err);
+        loading.dismiss();
+      });
+
+  }
+
+
+
+
   async saveCategorie(){
+  
     await this.api.createCategorie(this.categorie.value)
     .subscribe(res => {
-        this.router.navigate(['/categories']);
+        this.router.navigate(['/boutiques']);
       }, (err) => {
         console.log(err);
       });
@@ -42,6 +72,12 @@ export class AddCategoriePage implements OnInit {
   }
 
   ngOnInit() {
+    this.getBoutiques();
+   
 
+  }
+
+  ionViewWillEnter() {
+    this.ngOnInit();
   }
 }

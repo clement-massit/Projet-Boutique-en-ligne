@@ -10,6 +10,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 })
 export class ViewCategoriePage implements OnInit {
   categorie : any;
+  boutique : any;
   api : RestService;
   id : string;
   title : string;
@@ -45,11 +46,29 @@ export class ViewCategoriePage implements OnInit {
 
   }
 
+  async getBoutique(id:any) {
+    const loading = await this.loadingController.create({
+      message: 'Loading'
+    });
+
+    await loading.present();
+    await this.api.getBoutique(this.id)
+      .subscribe(res => {
+        console.log(res);
+        this.boutique = res;
+        loading.dismiss();
+      }, err => {
+        console.log(err);
+        loading.dismiss();
+      });
+
+  }
+
   async saveCategorie(){
-    await this.api.updateProduit(this.categorie._id, this.categorie)
+    await this.api.updateCategorie(this.categorie._id, this.categorie)
     .subscribe(res => {
         console.log(res);
-        this.router.navigate(['/categories']);
+        this.router.navigate(['/boutiques']);
       }, (err) => {
         console.log(err);
       });
@@ -59,7 +78,7 @@ export class ViewCategoriePage implements OnInit {
     await this.api.deleteCategorie(this.categorie._id)
     .subscribe(res => {
         console.log(res);
-        this.router.navigate(['/categories']);
+        this.router.navigate(['/categories/{{boutique._id}}']);
       }, (err) => {
         console.log(err);
       });
@@ -91,6 +110,7 @@ export class ViewCategoriePage implements OnInit {
     });
     console.log("Current id: " + this.id);
     this.getCategorie(this.id);
+    this.getBoutique(this.id);
   }
 
 }

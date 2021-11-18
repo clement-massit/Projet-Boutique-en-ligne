@@ -127,6 +127,7 @@ export class RestService {
       catchError(this.handleError));
   }
 
+
   deleteCategorie(id:any) : Observable<any> {
 
     const apiUrl = "http://localhost:3000/categorie/" + id;

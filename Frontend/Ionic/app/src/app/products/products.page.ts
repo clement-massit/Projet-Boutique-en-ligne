@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-
 import { LoadingController, NavController } from '@ionic/angular';
 import { RestService } from '../rest.service';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute, ParamMap} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,13 +9,15 @@ import {Router} from '@angular/router';
   styleUrls: ['products.page.scss'],
 })
 export class ProductsPage {
-
+  id : String;
   produits : any;
+  categorie : any;
   api : RestService;
 
   constructor(public restapi: RestService, 
     public loadingController: LoadingController, 
-    public navController : NavController, 
+    public navController : NavController,
+    private route: ActivatedRoute, 
     public router : Router) {
 
     this.api = restapi;
@@ -34,6 +35,24 @@ export class ProductsPage {
         this.produits = res.filter((aProduit) => {
           return this.produits
         });
+        loading.dismiss();
+      }, err => {
+        console.log(err);
+        loading.dismiss();
+      });
+
+  }
+
+  async getCategorie(id:any) {
+    const loading = await this.loadingController.create({
+      message: 'Loading'
+    });
+
+    await loading.present();
+    await this.api.getCategorie(this.id)
+      .subscribe(res => {
+        console.log(res);
+        this.categorie = res;
         loading.dismiss();
       }, err => {
         console.log(err);
@@ -72,7 +91,11 @@ export class ProductsPage {
   }
 
   ngOnInit() {
+    this.route.paramMap.subscribe((params : ParamMap)=> {
+      this.id=params.get('id');
+    });
     this.getProduits();
+    this.getCategorie(this.id);
   }
 
   ionViewWillEnter() {

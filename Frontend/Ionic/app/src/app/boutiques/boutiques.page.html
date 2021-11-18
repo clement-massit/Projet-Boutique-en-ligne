@@ -4,27 +4,21 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Boutiques
+      Liste des boutiques
     </ion-title>
     <ion-buttons slot="end">
       <ion-button routerLink="/add-boutique" routerDirection="forward">
         <ion-icon name="add-circle"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button routerLink="/home" routerDirection="forward">
-        <ion-icon name="home-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    
-  </ion-toolbar>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-menu side="start" menuId="custom" contentId="main" class="my-custom-menu">
     <ion-header>
       <ion-toolbar color="light">
-        <ion-title>Choisir</ion-title>
+        <ion-title [routerLink]="['/home']" routerDirection="forward">Home</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
@@ -37,22 +31,7 @@
               </ion-button>
             </ion-buttons>
         </ion-item>
-        <ion-item>
-          <ion-item slot="start" routerLink="/categories" routerDirection="forward">Categorie</ion-item>
-            <ion-buttons slot="end">
-              <ion-button routerLink="/add-categorie" routerDirection="forward">
-                <ion-icon slot="icon-only" name="add-circle"></ion-icon>
-              </ion-button>
-            </ion-buttons>
-        </ion-item>
-        <ion-item>
-          <ion-item slot="start" routerLink="/products" routerDirection="forward">Produit</ion-item>
-            <ion-buttons slot="end">
-              <ion-button routerLink="/addProduct" routerDirection="forward">
-                <ion-icon slot="icon-only" name="add-circle"></ion-icon>
-              </ion-button>
-            </ion-buttons>
-        </ion-item>
+        
         
         
       </ion-list>
@@ -61,19 +40,52 @@
   
   <ion-router-outlet id="main"></ion-router-outlet>
 
-  <ion-list *ngFor="let boutique of boutiques">
-    <ion-item-sliding #item>
-      <ion-item *ngIf="boutique" color="primary">
-        {{boutique.title}}
-      </ion-item>
-      <ion-item-options side="start">
-      </ion-item-options>
-      <ion-item-options side="end">
-        <button ion-button color="light" routerLink="/view-boutique/{{boutique._id}}">Edit</button>
-        <button ion-button (click)="delete([boutique._id])" color="danger">Delete</button>
-      </ion-item-options>
-    </ion-item-sliding>
+
+
+  <ion-list *ngFor="let boutique of boutiques" >
+      <ion-card>
+          <ion-item>
+            <ion-button slot="start" routerLink="/view-boutique/{{boutique._id}}">
+              <ion-icon name="create-outline"></ion-icon>
+            </ion-button>
+            <ion-label routerLink="/categories/{{boutique._id}}" routerDirection="forward">{{boutique.title}}</ion-label>
+            <ion-button ion-button (click)="delete([boutique._id])" color="danger" fill="outline" slot="end">
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-item>
+        
+          <ion-card-content>
+            {{boutique.description}}
+          </ion-card-content>
+        </ion-card>
   </ion-list>
+
+  
+ 
+  
+  <!--
+  <ion-card>
+    <ion-item>
+      <ion-button>
+
+      </ion-button>
+      <ion-icon name="pin" slot="start"></ion-icon>
+      <ion-label routerLink="/categories/{{boutique._id}}" routerDirection="forward">{{boutique.title}}</ion-label>
+      <ion-button fill="outline" slot="end">View</ion-button>
+    </ion-item>
+  
+    <ion-card-content>
+      This is content, without any paragraph or header tags,
+      within an ion-card-content element.
+    </ion-card-content>
+  </ion-card>
+  
+-->
+  
+  
+  
+
+ 
   <!--
     <div *ngIf="selectedItem" padding>
       You navigated here from <b>{{selectedItem.title }}</b>

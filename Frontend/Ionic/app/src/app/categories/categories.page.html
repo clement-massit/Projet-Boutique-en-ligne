@@ -4,27 +4,21 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Categories
+    Liste des catégories
     </ion-title>
     <ion-buttons slot="end">
       <ion-button routerLink="/add-categorie" routerDirection="forward">
         <ion-icon name="add-circle"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button routerLink="/home" routerDirection="forward">
-        <ion-icon name="home-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    
-  </ion-toolbar>
+</ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-menu side="start" menuId="custom" contentId="main" class="my-custom-menu">
     <ion-header>
       <ion-toolbar color="light">
-        <ion-title>Choisir</ion-title>
+        <ion-title [routerLink]="['/home']" routerDirection="forward">Home</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
@@ -37,24 +31,6 @@
               </ion-button>
             </ion-buttons>
         </ion-item>
-        <ion-item>
-          <ion-item slot="start" routerLink="/categories" routerDirection="forward">Categorie</ion-item>
-            <ion-buttons slot="end">
-              <ion-button routerLink="/add-categorie" routerDirection="forward">
-                <ion-icon slot="icon-only" name="add-circle"></ion-icon>
-              </ion-button>
-            </ion-buttons>
-        </ion-item>
-        <ion-item>
-          <ion-item slot="start" routerLink="/products" routerDirection="forward">Produit</ion-item>
-            <ion-buttons slot="end">
-              <ion-button routerLink="/addProduct" routerDirection="forward">
-                <ion-icon slot="icon-only" name="add-circle"></ion-icon>
-              </ion-button>
-            </ion-buttons>
-        </ion-item>
-        
-        
       </ion-list>
     </ion-content>
   </ion-menu>
@@ -62,19 +38,23 @@
   <ion-router-outlet id="main"></ion-router-outlet>
 
   <ion-list *ngFor="let categorie of categories">
-    <ion-item-sliding #item>
-      <ion-item *ngIf="categorie" color="primary">
-        {{categorie.title}}
-      </ion-item>
-
-
-      <ion-item-options side="start">
-      </ion-item-options>
-      <ion-item-options side="end">
-        <button ion-button color="light" routerLink="/view-categorie/{{categorie._id}}">Edit</button>
-        <button ion-button (click)="delete([categorie._id])" color="danger">Delete</button>
-      </ion-item-options>
-    </ion-item-sliding>
+    <ion-list *ngIf = "boutique._id === categorie.boutiques[0]">
+      <ion-card>
+        <ion-item>
+          <ion-button slot="start" routerLink="/view-categorie/{{categorie._id}}">
+            <ion-icon name="create-outline"></ion-icon>
+          </ion-button>
+          <ion-label routerLink="/products/{{categorie._id}}" routerDirection="forward">{{categorie.title}}</ion-label>
+          <ion-button ion-button (click)="delete([categorie._id])" color="danger" fill="outline" slot="end">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+      
+        <ion-card-content>
+          {{categorie.description}}
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
   </ion-list>
   <!--
     <div *ngIf="selectedItem" padding>

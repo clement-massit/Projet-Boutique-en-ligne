@@ -12,6 +12,7 @@ import { ActivatedRoute, Router  } from '@angular/router';
 export class AddPage implements OnInit {
   private produit : FormGroup;
   public api : RestService;
+  categories : any;
 
   constructor(
     public restapi: RestService,
@@ -23,14 +24,35 @@ export class AddPage implements OnInit {
             title: [''],
             description: [''],
             price: [''],
+            categories: ['']
           });
       this.api = restapi;
+  }
+
+  async getCategories() {
+    const loading = await this.loadingController.create({
+      message: 'Loading'
+    });
+
+    await loading.present();
+    await this.api.getCategories()
+      .subscribe(res => {
+        console.log(res);
+        this.categories = res.filter((aCategorie) => {
+          return this.categories
+        });
+        loading.dismiss();
+      }, err => {
+        console.log(err);
+        loading.dismiss();
+      });
+
   }
 
   async saveProduit(){
     await this.api.createProduit(this.produit.value)
     .subscribe(res => {
-        this.router.navigate(['/products']);
+        this.router.navigate(['/boutiques']);
       }, (err) => {
         console.log(err);
       });
@@ -43,7 +65,12 @@ export class AddPage implements OnInit {
   }
 
   ngOnInit() {
+    this.getCategories();
 
+  }
+
+  ionViewWillEnter() {
+    this.ngOnInit();
   }
 
 }
