@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="secondary"> 
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -51,7 +51,11 @@
           <ion-button slot="start" routerLink="/viewProduct/{{produit._id}}">
             <ion-icon name="create-outline"></ion-icon>
           </ion-button>
-          <ion-label routerLink="/products/{{categorie._id}}" routerDirection="forward">{{produit.title}}</ion-label>
+          <ion-label routerLink="/products/{{categorie._id}}" routerDirection="forward">
+            <ion-chip>
+              <ion-label color="secondary">{{produit.title}}</ion-label>
+            </ion-chip>
+          </ion-label>
           <ion-button ion-button (click)="delete([produit._id])" color="danger" fill="outline" slot="end">
             <ion-icon name="trash-outline"></ion-icon>
           </ion-button>
