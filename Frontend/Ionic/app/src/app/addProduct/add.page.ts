@@ -52,7 +52,7 @@ export class AddPage implements OnInit {
   async saveProduit(){
     await this.api.createProduit(this.produit.value)
     .subscribe(res => {
-        this.router.navigate(['/boutiques']);
+        this.router.navigate(['/products/' + this.produit.value['categories']]);
       }, (err) => {
         console.log(err);
       });

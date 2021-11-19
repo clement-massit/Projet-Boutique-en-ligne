@@ -59,7 +59,7 @@ export class AddCategoriePage implements OnInit {
   
     await this.api.createCategorie(this.categorie.value)
     .subscribe(res => {
-        this.router.navigate(['/boutiques']);
+        this.router.navigate(['/categories/' + this.categorie.value['boutiques']]);
       }, (err) => {
         console.log(err);
       });
