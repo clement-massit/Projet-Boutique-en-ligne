@@ -133,3 +133,5 @@ Wed, 17 Nov 2021 07:37:40 GMT | ERROR  | HTTP 404: ask for:  http://localhost:30
 Thu, 18 Nov 2021 17:53:23 GMT | ERROR  | HTTP 404: ask for:  http://localhost:3000/?title=Boutique%20n%C2%B01&description=c%27est%20la%20boutique%201
 Thu, 18 Nov 2021 17:54:02 GMT | ERROR  | HTTP 404: ask for:  http://localhost:3000/?title=Boutique%20n%C2%B01&description=c%27est%20la%20boutique%201
 Thu, 18 Nov 2021 17:54:31 GMT | ERROR  | HTTP 404: ask for:  http://localhost:3000/boutique//615885020698d2e8ad3e0fd1
+Wed, 24 Nov 2021 08:37:23 GMT | ERROR  | HTTP 404: ask for:  http://localhost:3000/?title=Todo&description=Todo
+Wed, 24 Nov 2021 08:37:23 GMT | ERROR  | HTTP 404: ask for:  http://localhost:3000/favicon.ico

@@ -51,7 +51,7 @@ export class ViewPage implements OnInit {
     await this.api.updateProduit(this.produit._id, this.produit)
     .subscribe(res => {
         console.log(res);
-        this.router.navigate(['/boutiques']);
+        this.router.navigate(['/products/' + this.produit.categories[0]]);
       }, (err) => {
         console.log(err);
       });

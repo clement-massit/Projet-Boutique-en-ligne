@@ -67,8 +67,8 @@ export class ViewCategoriePage implements OnInit {
   async saveCategorie(){
     await this.api.updateCategorie(this.categorie._id, this.categorie)
     .subscribe(res => {
-        console.log(res);
-        this.router.navigate(['/boutiques']);
+      console.log(this.id)
+        this.router.navigate(['/categories/' + this.categorie.boutiques[0]]);
       }, (err) => {
         console.log(err);
       });

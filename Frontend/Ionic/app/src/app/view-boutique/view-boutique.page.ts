@@ -47,7 +47,8 @@ export class ViewBoutiquePage implements OnInit {
   }
 
   async saveBoutique(){
-    await this.api.updateProduit(this.boutique._id, this.boutique)
+    
+    await this.api.updateBoutique(this.boutique._id, this.boutique)
     .subscribe(res => {
         console.log(res);
         this.router.navigate(['/boutiques']);
@@ -67,15 +68,9 @@ export class ViewBoutiquePage implements OnInit {
   }
 
   save() {
-
-    console.log(this.description);
-    console.log(this.title);
-    console.log(this.boutique._id);
-    
-
     this.boutique.title = this.title;
     this.boutique.description = this.description;
-
+    console.log(this.boutique.title)
     this.saveBoutique();
 
   }

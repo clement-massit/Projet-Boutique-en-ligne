@@ -15,10 +15,14 @@
 
 <ion-content padding>
   <ion-item>
+    <ion-label>Titre</ion-label>
+  </ion-item>
+  <ion-item>
     <ion-input value="{{categorie.title}}" rows="10" *ngIf="categorie" ngDefaultControl [(ngModel)]="title"></ion-input>
   </ion-item>
-
-
+  <ion-item>
+    <ion-label>Description</ion-label>
+  </ion-item>
   <ion-item>
     <ion-textarea value="{{categorie.description}}" rows="10" *ngIf="categorie" ngDefaultControl [(ngModel)]="description"></ion-textarea>
   </ion-item>
