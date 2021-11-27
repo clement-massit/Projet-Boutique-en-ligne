@@ -3,7 +3,7 @@
 [![forthebadge](https://forthebadge.com/images/badges/made-with-java.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)  
 
-A mobile app in order to create Shops, Categories, and Products fro your own 
+A mobile app in order to create Shops, Categories, and Products for your own online shop app
 
 ## BACKEND  
 It uses a MongoDB server to stock data
@@ -30,4 +30,7 @@ _Second cmd in Projet-Boutique-en-ligne\Frontend_
 ionic serve
 ```  
 
-It will open the app in your browser, press _F12_ in order to have a better visualisation (phone mod)
+It will open the app in your browser, press _F12_ in order to have a better visualisation (phone mod)  
+
+
+ENJOY ! 
