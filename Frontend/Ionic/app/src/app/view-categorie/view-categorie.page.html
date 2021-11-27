@@ -1,7 +1,9 @@
 <ion-header>
   <ion-toolbar color="secondary">
     <ion-buttons slot="start">
-      <ion-button routerLink="/"><ion-icon name="arrow-back"></ion-icon></ion-button>
+      <ion-back-button>
+        <ion-icon slot="icon-only" name="arrow-back-circle-outline"></ion-icon>
+      </ion-back-button>
     </ion-buttons>
     <ion-title>
       <span *ngIf="categorie" ngDefaultControl [(ngModel)]="title">{{categorie.title}}</span>

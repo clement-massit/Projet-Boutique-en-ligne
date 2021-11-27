@@ -2,37 +2,41 @@
   <ion-toolbar color="secondary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
     </ion-buttons>
+    
     <ion-title>
-    Liste des catégories
+        
+        Liste des catégories
     </ion-title>
     <ion-buttons slot="end">
+      
       <ion-button routerLink="/add-categorie" routerDirection="forward">
         <ion-icon name="add-circle"></ion-icon>
       </ion-button>
     </ion-buttons>
-</ion-toolbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  
+
   <ion-list *ngFor="let categorie of categories">
-    <ion-list *ngIf = "boutique._id === categorie.boutiques[0]">
+    <ion-list *ngIf="boutique._id === categorie.boutiques[0]">
       <ion-card>
         <ion-item>
           <ion-button slot="start" routerLink="/view-categorie/{{categorie._id}}">
             <ion-icon name="create-outline"></ion-icon>
           </ion-button>
           <ion-label routerLink="/products/{{categorie._id}}" routerDirection="forward">
-              <ion-chip>
-                <ion-label color="secondary">{{categorie.title}}</ion-label>
-              </ion-chip>
-            </ion-label>
+            <ion-chip>
+              <ion-label color="secondary">{{categorie.title}}</ion-label>
+            </ion-chip>
+          </ion-label>
           <ion-button ion-button (click)="delete([categorie._id])" color="danger" fill="outline" slot="end">
             <ion-icon name="trash-outline"></ion-icon>
           </ion-button>
         </ion-item>
-      
+
         <ion-card-content>
           {{categorie.description}}
         </ion-card-content>
